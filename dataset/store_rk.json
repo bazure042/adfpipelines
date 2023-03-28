@@ -1,0 +1,19 @@
+{
+	"name": "store_rk",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "windows_server_mySQL",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Ruksana"
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "`store`"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

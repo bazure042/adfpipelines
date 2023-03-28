@@ -1,0 +1,29 @@
+{
+	"name": "MySqlTable2_actor",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MySql1_praveen",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"username": "etluser",
+				"Password": "Zaq1@wsxCde3",
+				"servername": "52.147.201.151"
+			}
+		},
+		"parameters": {
+			"table_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": {
+				"value": "@dataset().table_name",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,19 @@
+{
+	"name": "filmtext",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "windows_server_mysql_manoj",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Manoj"
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "`film_text`"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,19 @@
+{
+	"name": "Binary_sftp_sink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "enterprizestorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "foreach",
+				"fileSystem": "targetdatastore"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

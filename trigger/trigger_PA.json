@@ -1,0 +1,24 @@
+{
+	"name": "trigger_PA",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "payment_PA",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 1440,
+				"startTime": "2023-03-15T17:13:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

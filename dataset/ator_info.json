@@ -1,0 +1,19 @@
+{
+	"name": "ator_info",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "windows_server_mysql_salman",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "~salman"
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "`actor_info`"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

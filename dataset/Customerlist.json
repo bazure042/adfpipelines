@@ -1,0 +1,19 @@
+{
+	"name": "Customerlist",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Windows_Server_MySQL_SK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "SK"
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "`customer_list`"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

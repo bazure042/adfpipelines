@@ -1,0 +1,14 @@
+{
+	"name": "Data-Processing-Orchestration",
+	"properties": {
+		"globalConfigurations": {
+			"PipelineBillingEnabled": "false"
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "767c8fba-7e00-40ae-99f2-acb60b0f9923",
+		"tenantId": "83f0a05d-8a5e-4712-9c1a-1e23da0b554f"
+	}
+}

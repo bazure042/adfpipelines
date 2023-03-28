@@ -1,0 +1,16 @@
+{
+	"name": "country_PA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MySql1_praveen",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "`country`"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

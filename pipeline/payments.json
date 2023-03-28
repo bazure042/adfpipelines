@@ -1,0 +1,69 @@
+{
+	"name": "payments",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "MySqlSource"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "MySql_sakiladb_sk",
+						"type": "DatasetReference",
+						"parameters": {
+							"Tablename": "payment"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Adls_output_SK",
+						"type": "DatasetReference",
+						"parameters": {
+							"Filename": "Payment"
+						}
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "SK"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-03-21T10:53:49Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

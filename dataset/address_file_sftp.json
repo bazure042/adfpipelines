@@ -1,0 +1,40 @@
+{
+	"name": "address_file_sftp",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Sftp4",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "sftp_dataset-ruksana"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "SftpLocation",
+				"fileName": "sample.csv",
+				"folderPath": "/home/azureuser"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "id",
+				"type": "String"
+			},
+			{
+				"name": "name",
+				"type": "String"
+			},
+			{
+				"name": "mobileno",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

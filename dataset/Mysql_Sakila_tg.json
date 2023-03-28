@@ -1,0 +1,27 @@
+{
+	"name": "Mysql_Sakila_tg",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "windows_server_mysql_tg",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"table": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Mysql_TG"
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": {
+				"value": "@dataset().table",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

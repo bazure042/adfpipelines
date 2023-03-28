@@ -1,0 +1,19 @@
+{
+	"name": "rental_pr",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "windows_server_mySQL",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "praneeth"
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "`rental`"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

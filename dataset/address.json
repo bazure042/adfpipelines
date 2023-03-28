@@ -1,0 +1,19 @@
+{
+	"name": "address",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "windows_server_mySQL",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Ruksana"
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "`address`"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

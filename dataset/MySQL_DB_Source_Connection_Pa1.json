@@ -1,0 +1,25 @@
+{
+	"name": "MySQL_DB_Source_Connection_Pa1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "windows_server_mySQL",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"table_name": {
+				"type": "string",
+				"defaultValue": "@item()"
+			}
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": {
+				"value": "@dataset().table_name",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

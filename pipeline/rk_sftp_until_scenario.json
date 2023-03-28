@@ -1,0 +1,249 @@
+{
+	"name": "rk_sftp_until_scenario",
+	"properties": {
+		"activities": [
+			{
+				"name": "rk_sftp_until_scenario",
+				"type": "Until",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@greater(int(variables('it1')),11)",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Get Metadata_source_until",
+							"type": "GetMetadata",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataset": {
+									"referenceName": "address_file_sftp",
+									"type": "DatasetReference"
+								},
+								"fieldList": [
+									"exists"
+								],
+								"storeSettings": {
+									"type": "SftpReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false,
+									"disableChunking": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							}
+						},
+						{
+							"name": "If Condition1",
+							"type": "IfCondition",
+							"dependsOn": [
+								{
+									"activity": "Get Metadata_source_until",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@activity('Get Metadata_source_until').output.exists",
+									"type": "Expression"
+								},
+								"ifFalseActivities": [
+									{
+										"name": "Wait_till_file_exists",
+										"type": "Wait",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"waitTimeInSeconds": 60
+										}
+									},
+									{
+										"name": "Set variable_for_count",
+										"type": "SetVariable",
+										"dependsOn": [
+											{
+												"activity": "Wait_till_file_exists",
+												"dependencyConditions": [
+													"Succeeded"
+												]
+											}
+										],
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "it1",
+											"value": {
+												"value": "@string(add(int(variables('ct1')),1))",
+												"type": "Expression"
+											}
+										}
+									},
+									{
+										"name": "Set variable_for_loop",
+										"type": "SetVariable",
+										"dependsOn": [
+											{
+												"activity": "Set variable_for_count",
+												"dependencyConditions": [
+													"Succeeded"
+												]
+											}
+										],
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "ct1",
+											"value": {
+												"value": "@variables('it1')",
+												"type": "Expression"
+											}
+										}
+									}
+								],
+								"ifTrueActivities": [
+									{
+										"name": "copy data_sftp_adls",
+										"type": "Copy",
+										"dependsOn": [],
+										"policy": {
+											"timeout": "0.12:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"source": {
+												"type": "DelimitedTextSource",
+												"storeSettings": {
+													"type": "SftpReadSettings",
+													"recursive": true,
+													"enablePartitionDiscovery": false,
+													"disableChunking": false
+												},
+												"formatSettings": {
+													"type": "DelimitedTextReadSettings"
+												}
+											},
+											"sink": {
+												"type": "DelimitedTextSink",
+												"storeSettings": {
+													"type": "AzureBlobFSWriteSettings"
+												},
+												"formatSettings": {
+													"type": "DelimitedTextWriteSettings",
+													"quoteAllText": true,
+													"fileExtension": ".txt"
+												}
+											},
+											"enableStaging": false,
+											"translator": {
+												"type": "TabularTranslator",
+												"typeConversion": true,
+												"typeConversionSettings": {
+													"allowDataTruncation": true,
+													"treatBooleanAsNumber": false
+												}
+											}
+										},
+										"inputs": [
+											{
+												"referenceName": "address_file_sftp",
+												"type": "DatasetReference"
+											}
+										],
+										"outputs": [
+											{
+												"referenceName": "address_data_copy",
+												"type": "DatasetReference"
+											}
+										]
+									},
+									{
+										"name": "Set variable_for_interval",
+										"type": "SetVariable",
+										"dependsOn": [
+											{
+												"activity": "copy data_sftp_adls",
+												"dependencyConditions": [
+													"Succeeded"
+												]
+											}
+										],
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "it1",
+											"value": {
+												"value": "@string(12)",
+												"type": "Expression"
+											}
+										}
+									}
+								]
+							}
+						},
+						{
+							"name": "If Condition2",
+							"type": "IfCondition",
+							"dependsOn": [
+								{
+									"activity": "If Condition1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@and(not(activity('Get Metadata_source_until').output.exists),equals(variables('it1'),11))",
+									"type": "Expression"
+								},
+								"ifTrueActivities": [
+									{
+										"name": "Fail1",
+										"type": "Fail",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"message": "SFTP Files are not ready to download please work with source team.",
+											"errorCode": "Customer_File_Not_Exists"
+										}
+									}
+								]
+							}
+						}
+					],
+					"timeout": "0.12:00:00"
+				}
+			}
+		],
+		"variables": {
+			"it1": {
+				"type": "String"
+			},
+			"ct1": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "rk_sftp_looping_scenarios"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-03-24T06:49:07Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

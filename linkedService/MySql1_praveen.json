@@ -1,0 +1,25 @@
+{
+	"name": "MySql1_praveen",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"parameters": {
+			"username": {
+				"type": "string",
+				"defaultValue": "etluser"
+			},
+			"Password": {
+				"type": "string",
+				"defaultValue": "Zaq1@wsxCde3"
+			},
+			"servername": {
+				"type": "string",
+				"defaultValue": "52.147.201.151"
+			}
+		},
+		"annotations": [],
+		"type": "MySql",
+		"typeProperties": {
+			"connectionString": "Server=52.147.201.151;Port=3306;Database=sakila;User=@{linkedService().username};SSLMode=1;UseSystemTrustStore=0;Password=@{linkedService().Password}"
+		}
+	}
+}

@@ -1,0 +1,19 @@
+{
+	"name": "Film_text_raj",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "windows_server_mySQL",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Shashank Raj"
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "`film_text`"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

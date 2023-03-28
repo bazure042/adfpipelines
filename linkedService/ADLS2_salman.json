@@ -1,0 +1,12 @@
+{
+	"name": "ADLS2_salman",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://enterprizestorage.dfs.core.windows.net/",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEI4NUVGRjIwLTc0OEYtNDI4Qy1CMEY1LTg4RDYzQkVDQzQwMV9jNjk3N2FjYy05OTY4LTQ2ZTUtYmM4ZS1mZmIzM2ZmNjI4ZmQiDQp9"
+		}
+	}
+}

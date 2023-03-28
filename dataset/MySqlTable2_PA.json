@@ -1,0 +1,16 @@
+{
+	"name": "MySqlTable2_PA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MySql1_praveen",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "`film`"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

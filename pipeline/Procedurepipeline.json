@@ -1,0 +1,40 @@
+{
+	"name": "Procedurepipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "Stored procedure1",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[load_data_from_a_to_b]",
+					"storedProcedureParameters": {
+						"sourcetable": {
+							"value": "employee",
+							"type": "String"
+						},
+						"targettable": {
+							"value": "employee1",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "enterprizestorage_db",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2023-03-21T02:48:01Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

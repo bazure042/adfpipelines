@@ -1,0 +1,17 @@
+{
+	"name": "emp_data",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "datastorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "employee"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

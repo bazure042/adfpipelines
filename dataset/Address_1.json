@@ -1,0 +1,19 @@
+{
+	"name": "Address_1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "windows_server_mysql_manoj",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Manoj"
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "`address`"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

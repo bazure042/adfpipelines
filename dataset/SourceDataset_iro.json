@@ -1,0 +1,24 @@
+{
+	"name": "SourceDataset_iro",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "blbtbsource",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "departments.csv",
+				"folderPath": "test/csvfiles",
+				"container": "datastore"
+			},
+			"compression": {
+				"type": "GZip",
+				"level": "Optimal"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
