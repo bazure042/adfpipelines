@@ -132,6 +132,12 @@
 				]
 			}
 		],
+		"parameters": {
+			"table": {
+				"type": "string",
+				"defaultValue": "rental"
+			}
+		},
 		"folder": {
 			"name": "ruksana_adls"
 		},

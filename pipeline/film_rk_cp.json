@@ -198,6 +198,12 @@
 				]
 			}
 		],
+		"parameters": {
+			"table": {
+				"type": "string",
+				"defaultValue": "film"
+			}
+		},
 		"folder": {
 			"name": "ruksana_adls"
 		},

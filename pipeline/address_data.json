@@ -163,6 +163,12 @@
 				]
 			}
 		],
+		"parameters": {
+			"table": {
+				"type": "string",
+				"defaultValue": "address"
+			}
+		},
 		"folder": {
 			"name": "ruksana_adls"
 		},
