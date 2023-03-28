@@ -19,7 +19,7 @@
 						"type": "MySqlSource"
 					},
 					"dataset": {
-						"referenceName": "address",
+						"referenceName": "film_actor_rk",
 						"type": "DatasetReference"
 					}
 				}
