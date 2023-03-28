@@ -5,7 +5,14 @@
 			{
 				"name": "parameter_pipeline_copy_activity",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Delete1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -57,8 +64,45 @@
 						}
 					}
 				]
+			},
+			{
+				"name": "Delete1",
+				"type": "Delete",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "parameterize_adls_files_store",
+						"type": "DatasetReference",
+						"parameters": {
+							"f_name": {
+								"value": "@pipeline().parameters.pp_par_tname",
+								"type": "Expression"
+							}
+						}
+					},
+					"enableLogging": false,
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					}
+				}
 			}
 		],
+		"parameters": {
+			"pp_par_tname": {
+				"type": "string",
+				"defaultValue": "address"
+			}
+		},
 		"folder": {
 			"name": "general_activities_rk"
 		},
