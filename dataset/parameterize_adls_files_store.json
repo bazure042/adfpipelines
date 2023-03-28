@@ -1,0 +1,30 @@
+{
+	"name": "parameterize_adls_files_store",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "batchstorage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"f_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "@dataset().f_name",
+					"type": "Expression"
+				},
+				"fileSystem": "targetdatastore"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

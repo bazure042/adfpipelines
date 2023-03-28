@@ -1,0 +1,23 @@
+{
+	"name": "parameterize_db_tables",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Windows_Server_MySQL_SK",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"t_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": {
+				"value": "@dataset().t_name",
+				"type": "Expression"
+			}
+		}
+	}
+}

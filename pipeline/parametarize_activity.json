@@ -1,6 +1,67 @@
 {
 	"name": "parametarize_activity",
 	"properties": {
+		"activities": [
+			{
+				"name": "parameter_pipeline_copy_activity",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "MySqlSource"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "parameterize_db_tables",
+						"type": "DatasetReference",
+						"parameters": {
+							"t_name": "rental"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "parameterize_adls_files_store",
+						"type": "DatasetReference",
+						"parameters": {
+							"f_name": "rental"
+						}
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "general_activities_rk"
+		},
 		"annotations": []
 	}
 }
