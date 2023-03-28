@@ -8,6 +8,10 @@
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "@variables('tables_list')",
+						"type": "Expression"
+					},
 					"activities": [
 						{
 							"name": "Copy data_lookup_tables",
@@ -75,6 +79,19 @@
 				}
 			}
 		],
+		"variables": {
+			"tables_list": {
+				"type": "Array",
+				"defaultValue": [
+					"actor",
+					"rental",
+					"payment",
+					"address",
+					"customer",
+					"film"
+				]
+			}
+		},
 		"annotations": []
 	}
 }
