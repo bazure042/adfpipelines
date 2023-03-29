@@ -56,6 +56,18 @@
 				]
 			}
 		],
+		"parameters": {
+			"table": {
+				"type": "string",
+				"defaultValue": "actor"
+			}
+		},
+		"variables": {
+			"table_name": {
+				"type": "String",
+				"defaultValue": "dbo.actor"
+			}
+		},
 		"folder": {
 			"name": "Pavan_ADE"
 		},
