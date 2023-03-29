@@ -1,6 +1,93 @@
 {
 	"name": "Dynamic_Copy_MySQL_Tables_2_Azure_Cloud_SQL_Server",
 	"properties": {
+		"activities": [
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.Tables",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Copy data1",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "MySqlSource"
+								},
+								"sink": {
+									"type": "SqlServerSink",
+									"writeBehavior": "insert",
+									"sqlWriterUseTableLock": false
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "MySQL_DB_Source_Connection_Pa1",
+									"type": "DatasetReference",
+									"parameters": {
+										"table_name": "@item()"
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "Azure_SQL_DB_Table",
+									"type": "DatasetReference"
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"Tables_list": {
+				"type": "array",
+				"defaultValue": [
+					"actor",
+					"address",
+					"category",
+					"city",
+					"country",
+					"customer",
+					"film",
+					"film_actor",
+					"film_category",
+					"film_text",
+					"inventory",
+					"language",
+					"payment",
+					"rental",
+					"staff",
+					"store"
+				]
+			}
+		},
 		"folder": {
 			"name": "Pavan_ADE"
 		},
