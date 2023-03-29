@@ -1,0 +1,15 @@
+{
+	"name": "Dharani_mysql_actor",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "windows_server_mySQL",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "`actor`"
+		}
+	}
+}
