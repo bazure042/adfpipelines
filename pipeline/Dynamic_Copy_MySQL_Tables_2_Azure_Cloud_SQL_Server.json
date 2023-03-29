@@ -9,7 +9,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@pipeline().parameters.Tables",
+						"value": "@pipeline().parameters.Tables_list",
 						"type": "Expression"
 					},
 					"isSequential": true,
@@ -57,7 +57,13 @@
 							"outputs": [
 								{
 									"referenceName": "Azure_SQL_DB_Table",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"table_name": {
+											"value": "@concat(variables('table_name'),item())",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
@@ -69,23 +75,14 @@
 			"Tables_list": {
 				"type": "array",
 				"defaultValue": [
-					"actor",
-					"address",
-					"category",
-					"city",
-					"country",
-					"customer",
-					"film",
-					"film_actor",
-					"film_category",
-					"film_text",
-					"inventory",
-					"language",
-					"payment",
-					"rental",
-					"staff",
-					"store"
+					"actor"
 				]
+			}
+		},
+		"variables": {
+			"table_name": {
+				"type": "String",
+				"defaultValue": "MySQL_Table_Pa1_"
 			}
 		},
 		"folder": {
