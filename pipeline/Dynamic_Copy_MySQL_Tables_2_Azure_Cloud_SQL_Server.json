@@ -59,7 +59,7 @@
 									"referenceName": "Azure_SQL_DB_Table",
 									"type": "DatasetReference",
 									"parameters": {
-										"table_name": {
+										"table_naming": {
 											"value": "@concat(variables('table_name'),item())",
 											"type": "Expression"
 										}
