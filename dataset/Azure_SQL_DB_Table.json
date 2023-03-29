@@ -7,8 +7,7 @@
 		},
 		"parameters": {
 			"table_naming": {
-				"type": "string",
-				"defaultValue": "@concat(variables('table_name'),item())"
+				"type": "string"
 			}
 		},
 		"annotations": [],
