@@ -71,6 +71,7 @@
 				}
 			}
 		],
+		"concurrency": 1,
 		"parameters": {
 			"Tables_list": {
 				"type": "array",
