@@ -1,0 +1,21 @@
+{
+	"name": "Parquet_actor",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "actor",
+				"folderPath": "actor",
+				"fileSystem": "team1"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
