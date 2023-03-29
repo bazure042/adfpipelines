@@ -1,0 +1,9 @@
+{
+	"name": "orchestration-0290",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "d3cc3869-5843-486f-ac86-214ad6209048",
+		"tenantId": "83f0a05d-8a5e-4712-9c1a-1e23da0b554f"
+	}
+}
