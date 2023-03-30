@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "tables_list_find",
+				"name": "tables_list_db",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -32,7 +32,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "tables_list_find",
+						"activity": "tables_list_db",
 						"dependencyConditions": [
 							"Succeeded"
 						]
