@@ -1,0 +1,73 @@
+{
+	"name": "mysql_adls_storage",
+	"properties": {
+		"activities": [
+			{
+				"name": "tables_list_find",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"dataset": {
+						"referenceName": "adls_files_db_sftp",
+						"type": "DatasetReference",
+						"parameters": {
+							"filenames": {
+								"value": "@variables('tableslist')",
+								"type": "Expression"
+							}
+						}
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "tables_list_find",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": []
+			}
+		],
+		"variables": {
+			"tableslist": {
+				"type": "Array",
+				"defaultValue": [
+					"film",
+					"actor",
+					"film_actor",
+					"payment",
+					"rental"
+				]
+			}
+		},
+		"folder": {
+			"name": "Ruksana"
+		},
+		"annotations": []
+	}
+}
