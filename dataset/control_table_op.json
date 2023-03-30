@@ -1,0 +1,16 @@
+{
+	"name": "control_table_op",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "db_control_store",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Data_load_control"
+		}
+	}
+}
