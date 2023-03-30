@@ -39,6 +39,11 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup_control_tables').output",
+						"type": "Expression"
+					},
+					"batchCount": 10,
 					"activities": [
 						{
 							"name": "Copy data1",
@@ -57,33 +62,20 @@
 									"type": "MySqlSource"
 								},
 								"sink": {
-									"type": "DelimitedTextSink",
+									"type": "BinarySink",
 									"storeSettings": {
 										"type": "AzureBlobFSWriteSettings"
-									},
-									"formatSettings": {
-										"type": "DelimitedTextWriteSettings",
-										"quoteAllText": true,
-										"fileExtension": ".txt"
 									}
 								},
-								"enableStaging": false,
-								"translator": {
-									"type": "TabularTranslator",
-									"typeConversion": true,
-									"typeConversionSettings": {
-										"allowDataTruncation": true,
-										"treatBooleanAsNumber": false
-									}
-								}
+								"enableStaging": false
 							},
 							"inputs": [
 								{
-									"referenceName": "parameter_table",
+									"referenceName": "parameter_table_rk",
 									"type": "DatasetReference",
 									"parameters": {
-										"table_name": {
-											"value": "@item().table",
+										"tname": {
+											"value": "@item().tablename",
 											"type": "Expression"
 										}
 									}
@@ -91,8 +83,14 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "parameterize_adls_files_store",
-									"type": "DatasetReference"
+									"referenceName": "parameterize_table_rk",
+									"type": "DatasetReference",
+									"parameters": {
+										"fname": {
+											"value": "@item().tablename",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
@@ -100,15 +98,16 @@
 				}
 			}
 		],
-		"parameters": {
-			"tables_list": {
-				"type": "array",
+		"variables": {
+			"tableslist": {
+				"type": "Array",
 				"defaultValue": [
 					"actor",
 					"rental",
 					"address",
 					"payment",
-					"film"
+					"film",
+					"film_actor"
 				]
 			}
 		},
