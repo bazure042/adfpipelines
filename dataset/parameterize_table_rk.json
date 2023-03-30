@@ -1,0 +1,26 @@
+{
+	"name": "parameterize_table_rk",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "batchstorage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"fname": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "@dataset().fname",
+					"type": "Expression"
+				},
+				"fileSystem": "targetdatastore"
+			}
+		}
+	}
+}
