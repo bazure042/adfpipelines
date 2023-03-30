@@ -1,5 +1,5 @@
 {
-	"name": "sftp_rk",
+	"name": "sftp_adls_storage",
 	"properties": {
 		"activities": [
 			{
