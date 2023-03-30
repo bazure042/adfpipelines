@@ -1,0 +1,18 @@
+{
+	"name": "query",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "windows_server_db_rk",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Ruksana"
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "`actor`"
+		}
+	}
+}
