@@ -1,0 +1,88 @@
+{
+	"name": "Mysql_Sakila_to_AdlsG2",
+	"properties": {
+		"activities": [
+			{
+				"name": "List of tables",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "MySqlSource",
+						"query": "SELECT TABLE_SCHEMA, TABLE_NAME FROM\n INFORMATION_SCHEMA.TABLES\n WHERE TABLE_TYPE = 'BASE TABLE'and TABLE_SCHEMA = 'SAKILA'"
+					},
+					"dataset": {
+						"referenceName": "MySql_sakila_Tables",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEach_Table",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "List of tables",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('List of tables').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Copy sakila to ADLSG 2",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "MySqlSource"
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "MySqlTable1",
+									"type": "DatasetReference",
+									"parameters": {
+										"table": {
+											"value": "@item().table_name",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"folder": {
+			"name": "Salman"
+		},
+		"annotations": []
+	}
+}
