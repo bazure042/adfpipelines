@@ -1,0 +1,81 @@
+{
+	"name": "Actors_Film_Count",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Film_Actor_Table_pa1",
+						"type": "DatasetReference"
+					},
+					"name": "FilmActor"
+				},
+				{
+					"dataset": {
+						"referenceName": "Actors_Table_Pa1",
+						"type": "DatasetReference"
+					},
+					"name": "Actors"
+				}
+			],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "join1"
+				},
+				{
+					"name": "select1"
+				},
+				{
+					"name": "aggregate1"
+				}
+			],
+			"scriptLines": [
+				"parameters{",
+				"     parameter1 as string (first_name)",
+				"}",
+				"source(output(",
+				"          actor_id as string,",
+				"          film_id as string,",
+				"          last_update as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> FilmActor",
+				"source(output(",
+				"          actor_id as string,",
+				"          first_name as string,",
+				"          last_name as string,",
+				"          last_update as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> Actors",
+				"FilmActor, Actors join(FilmActor@actor_id == Actors@actor_id,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     partitionBy('hash', 1),",
+				"     broadcast: 'auto')~> join1",
+				"join1 select(mapColumn(",
+				"          actor_id = FilmActor@actor_id,",
+				"          first_name,",
+				"          last_name",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 aggregate(groupBy(actor_id),",
+				"     No_of_films = count()) ~> aggregate1",
+				"aggregate1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}
