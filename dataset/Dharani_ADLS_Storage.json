@@ -1,0 +1,22 @@
+{
+	"name": "Dharani_ADLS_Storage",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "enterprizestorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "dharani",
+				"fileSystem": "targetdatastore"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
