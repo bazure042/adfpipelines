@@ -1,0 +1,26 @@
+{
+	"name": "mysql_database",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "windows_server_db_rk",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"t_names": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Ruksana"
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": {
+				"value": "@dataset().t_names",
+				"type": "Expression"
+			}
+		}
+	}
+}
