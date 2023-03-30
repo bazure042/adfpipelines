@@ -53,10 +53,13 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "MySQL_DB_Source_Connection_Pa1",
+									"referenceName": "VM_MySQL_DB_pa1",
 									"type": "DatasetReference",
 									"parameters": {
-										"table_name": "@item()"
+										"Table_Name": {
+											"value": "@item()",
+											"type": "Expression"
+										}
 									}
 								}
 							],
