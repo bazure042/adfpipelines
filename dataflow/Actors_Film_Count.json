@@ -32,9 +32,6 @@
 				}
 			],
 			"scriptLines": [
-				"parameters{",
-				"     parameter1 as string (first_name)",
-				"}",
 				"source(output(",
 				"          actor_id as string,",
 				"          film_id as string,",
