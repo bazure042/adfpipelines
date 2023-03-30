@@ -1,0 +1,26 @@
+{
+	"name": "Binary5",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Sftp5",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"filename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "SftpLocation",
+				"fileName": {
+					"value": "@dataset().filename",
+					"type": "Expression"
+				},
+				"folderPath": "/landing"
+			}
+		}
+	}
+}
