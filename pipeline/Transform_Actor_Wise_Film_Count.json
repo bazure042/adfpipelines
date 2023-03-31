@@ -17,7 +17,12 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "Actors_Film_Count",
-						"type": "DataFlowReference"
+						"type": "DataFlowReference",
+						"datasetParameters": {
+							"sink1": {
+								"File_Name": "Actors_Wise_Film_Count_pa1.csv"
+							}
+						}
 					},
 					"compute": {
 						"coreCount": 8,
