@@ -1,0 +1,32 @@
+{
+	"name": "adls_op_db_sftp",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adls_op_store",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"fname": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Ruksana"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().fname",
+					"type": "Expression"
+				},
+				"folderPath": "ruksana_db_store",
+				"fileSystem": "team2"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
