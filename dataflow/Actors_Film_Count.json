@@ -43,9 +43,6 @@
 				}
 			],
 			"scriptLines": [
-				"parameters{",
-				"     File_Name as string (Actors_Wise_Film_Count_pa1.csv)",
-				"}",
 				"source(output(",
 				"          actor_id as string,",
 				"          film_id as string,",
