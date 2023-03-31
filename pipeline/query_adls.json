@@ -19,14 +19,12 @@
 						"type": "MySqlSource"
 					},
 					"sink": {
-						"type": "DelimitedTextSink",
+						"type": "ParquetSink",
 						"storeSettings": {
 							"type": "AzureBlobFSWriteSettings"
 						},
 						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
+							"type": "ParquetWriteSettings"
 						}
 					},
 					"enableStaging": false,
@@ -93,11 +91,8 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "adls_files_db_sftp",
-						"type": "DatasetReference",
-						"parameters": {
-							"filenames": "actor"
-						}
+						"referenceName": "adls_op_db_sftp",
+						"type": "DatasetReference"
 					}
 				]
 			}
