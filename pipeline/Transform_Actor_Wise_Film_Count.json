@@ -17,10 +17,7 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "Actors_Film_Count",
-						"type": "DataFlowReference",
-						"parameters": {
-							"parameter1": "first_name"
-						}
+						"type": "DataFlowReference"
 					},
 					"compute": {
 						"coreCount": 8,

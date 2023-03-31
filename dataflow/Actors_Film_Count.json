@@ -33,9 +33,6 @@
 				},
 				{
 					"name": "select1"
-				},
-				{
-					"name": "select2"
 				}
 			],
 			"scriptLines": [
@@ -70,15 +67,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"join2 select(mapColumn(",
-				"          actor_id = aggregate1@actor_id,",
-				"          first_name,",
-				"          last_name,",
-				"          No_of_Films",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select2",
-				"select2 sink(allowSchemaDrift: true,",
+				"join2 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> sink1"
