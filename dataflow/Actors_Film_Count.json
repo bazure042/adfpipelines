@@ -84,6 +84,7 @@
 				"     skipDuplicateMapOutputs: true) ~> select2",
 				"select2 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     partitionFileNames:[''],",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
