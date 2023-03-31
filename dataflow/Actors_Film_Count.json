@@ -19,16 +19,23 @@
 					"name": "Actors"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
-					"name": "join1"
+					"name": "aggregate1"
+				},
+				{
+					"name": "join2"
 				},
 				{
 					"name": "select1"
 				},
 				{
-					"name": "aggregate1"
+					"name": "select2"
 				}
 			],
 			"scriptLines": [
@@ -49,20 +56,32 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> Actors",
-				"FilmActor, Actors join(FilmActor@actor_id == Actors@actor_id,",
+				"FilmActor aggregate(groupBy(actor_id),",
+				"     No_of_Films = count()) ~> aggregate1",
+				"select1, aggregate1 join(select1@actor_id == aggregate1@actor_id,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> join1",
-				"join1 select(mapColumn(",
-				"          actor_id = FilmActor@actor_id,",
+				"     broadcast: 'auto')~> join2",
+				"Actors select(mapColumn(",
+				"          actor_id,",
 				"          first_name,",
 				"          last_name",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 aggregate(groupBy(actor_id),",
-				"     No_of_Films = count()) ~> aggregate1"
+				"join2 select(mapColumn(",
+				"          actor_id = aggregate1@actor_id,",
+				"          first_name,",
+				"          last_name,",
+				"          No_of_Films",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select2",
+				"select2 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
