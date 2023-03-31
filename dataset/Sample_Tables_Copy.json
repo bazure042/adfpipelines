@@ -1,0 +1,32 @@
+{
+	"name": "Sample_Tables_Copy",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "enterprizestorage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Table_naming": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().Table_naming",
+					"type": "Expression"
+				},
+				"folderPath": "pa1/sample_test_dir",
+				"fileSystem": "targetdatastore"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
