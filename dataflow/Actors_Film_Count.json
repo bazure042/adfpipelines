@@ -40,6 +40,9 @@
 				},
 				{
 					"name": "select2"
+				},
+				{
+					"name": "sort1"
 				}
 			],
 			"scriptLines": [
@@ -59,7 +62,8 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> Actors",
+				"     ignoreNoFilesFound: false,",
+				"     partitionBy('hash', 1)) ~> Actors",
 				"FilmActor aggregate(groupBy(actor_id),",
 				"     No_of_Films = count()) ~> aggregate1",
 				"select1, aggregate1 join(select1@actor_id == aggregate1@actor_id,",
@@ -82,7 +86,8 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select2",
-				"select2 sink(allowSchemaDrift: true,",
+				"select2 sort(asc(actor_id, true)) ~> sort1",
+				"sort1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     partitionFileNames:['Actors_Wise_Film_Count_pa1.csv'],",
 				"     umask: 0022,",
