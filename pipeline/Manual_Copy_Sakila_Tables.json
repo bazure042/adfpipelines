@@ -21,7 +21,8 @@
 					"sink": {
 						"type": "DelimitedTextSink",
 						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
+							"type": "AzureBlobFSWriteSettings",
+							"maxConcurrentConnections": 1
 						},
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
@@ -54,7 +55,13 @@
 				"outputs": [
 					{
 						"referenceName": "Sample_Tables_Copy",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"Table_naming": {
+								"value": "@concat(pipeline().parameters.table_name,variables('extension'))",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
@@ -62,6 +69,12 @@
 		"parameters": {
 			"table_name": {
 				"type": "string"
+			}
+		},
+		"variables": {
+			"extension": {
+				"type": "String",
+				"defaultValue": ".csv"
 			}
 		},
 		"folder": {
