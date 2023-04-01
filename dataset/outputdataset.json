@@ -5,6 +5,9 @@
 			"referenceName": "MySql_To_AdlsG2",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "salman"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
