@@ -1,0 +1,22 @@
+{
+	"name": "outputdataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MySql_To_AdlsG2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "salman_sakila/sakila",
+				"fileSystem": "team2"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
