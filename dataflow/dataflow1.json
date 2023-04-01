@@ -1,0 +1,97 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"folder": {
+			"name": "ruksana"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "filmdataset",
+						"type": "DatasetReference"
+					},
+					"name": "filmdata"
+				},
+				{
+					"dataset": {
+						"referenceName": "languagedataset",
+						"type": "DatasetReference"
+					},
+					"name": "languagedata"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "outputdataset",
+						"type": "DatasetReference"
+					},
+					"name": "outputdata",
+					"rejectedDataLinkedService": {
+						"referenceName": "MySql_To_AdlsG2",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
+			"transformations": [
+				{
+					"name": "filmlanguagejoin"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          film_id as string,",
+				"          title as string,",
+				"          description as string,",
+				"          release_year as string,",
+				"          language_id as string,",
+				"          original_language_id as string,",
+				"          rental_duration as string,",
+				"          rental_rate as string,",
+				"          length as string,",
+				"          replacement_cost as string,",
+				"          rating as string,",
+				"          special_features as string,",
+				"          last_update as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> filmdata",
+				"source(output(",
+				"          language_id as string,",
+				"          name as string,",
+				"          last_update as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> languagedata",
+				"filmdata, languagedata join(filmdata@language_id == languagedata@language_id,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> filmlanguagejoin",
+				"filmlanguagejoin sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['filmlanguageoutput'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          film_id,",
+				"          title,",
+				"          description,",
+				"          language_id = filmdata@language_id,",
+				"          original_language_id,",
+				"          rating,",
+				"          language_id = languagedata@language_id,",
+				"          name",
+				"     ),",
+				"     partitionBy('hash', 1)) ~> outputdata"
+			]
+		}
+	}
+}
