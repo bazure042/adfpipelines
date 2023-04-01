@@ -1,0 +1,20 @@
+{
+	"name": "Parquet1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MySql_To_AdlsG2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "dharani/film_actor",
+				"fileSystem": "targetdatastore"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
