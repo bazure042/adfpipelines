@@ -20,8 +20,7 @@
 				],
 				"typeProperties": {
 					"source": {
-						"type": "MySqlSource",
-						"query": "SELECT TABLE_SCHEMA, TABLE_NAME FROM information_schema.TABLES WHERE TABLE_TYPE = 'BASE TABLE' and TABLE_SCHEMA = 'SAKILA';"
+						"type": "MySqlSource"
 					},
 					"dataset": {
 						"referenceName": "MySqlTables",
