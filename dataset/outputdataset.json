@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "salman_sakila/sakila",
+				"folderPath": "salman_sakila/sakila/output files",
 				"fileSystem": "team2"
 			},
 			"columnDelimiter": ",",
