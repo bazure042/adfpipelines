@@ -1,0 +1,39 @@
+{
+	"name": "sakila_to_adlsg2",
+	"properties": {
+		"activities": [
+			{
+				"name": "List of tables",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": ""
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "MySqlSource",
+						"query": "SELECT TABLE_SCHEMA, TABLE_NAME FROM information_schema.TABLES WHERE TABLE_TYPE = 'BASE TABLE' and TABLE_SCHEMA = 'SAKILA';"
+					},
+					"dataset": {
+						"referenceName": "MySqlTables",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": true
+				}
+			}
+		],
+		"folder": {
+			"name": "~salman"
+		},
+		"annotations": []
+	}
+}
