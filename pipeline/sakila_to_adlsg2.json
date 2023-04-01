@@ -15,7 +15,8 @@
 				},
 				"userProperties": [
 					{
-						"name": ""
+						"name": "actor_info",
+						"value": "actor_info"
 					}
 				],
 				"typeProperties": {
