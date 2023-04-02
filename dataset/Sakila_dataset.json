@@ -1,0 +1,12 @@
+{
+	"name": "Sakila_dataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Windows_server_Mysql",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": []
+	}
+}
