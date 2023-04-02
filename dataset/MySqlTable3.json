@@ -1,0 +1,23 @@
+{
+	"name": "MySqlTable3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Windows_server_Mysql",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"table": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": {
+				"value": "@dataset().table",
+				"type": "Expression"
+			}
+		}
+	}
+}
