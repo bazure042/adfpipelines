@@ -22,7 +22,8 @@
 					"dataset": {
 						"referenceName": "Sakila_dataset",
 						"type": "DatasetReference"
-					}
+					},
+					"firstRowOnly": false
 				}
 			}
 		],
