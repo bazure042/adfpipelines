@@ -40,7 +40,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('list of tables').output",
+						"value": "@activity('list of tables').output.value",
 						"type": "Expression"
 					},
 					"isSequential": true,
