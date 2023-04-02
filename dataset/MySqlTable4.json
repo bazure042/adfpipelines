@@ -1,8 +1,8 @@
 {
-	"name": "MySqlTable3",
+	"name": "MySqlTable4",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "Windows_server_Mysql",
+			"referenceName": "Windows_server_MySql_employee",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {

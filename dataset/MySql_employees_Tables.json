@@ -5,14 +5,11 @@
 			"referenceName": "Windows_server_MySql_employee",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "salman"
+		},
 		"annotations": [],
 		"type": "MySqlTable",
-		"schema": [],
-		"typeProperties": {
-			"tableName": {
-				"value": "@dataset().table",
-				"type": "Expression"
-			}
-		}
+		"schema": []
 	}
 }

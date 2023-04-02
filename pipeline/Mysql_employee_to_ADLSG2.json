@@ -84,8 +84,11 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "MySql_employees_Tables",
-									"type": "DatasetReference"
+									"referenceName": "MySqlTable4",
+									"type": "DatasetReference",
+									"parameters": {
+										"table": "@item().TABLE_NAME"
+									}
 								}
 							],
 							"outputs": [
