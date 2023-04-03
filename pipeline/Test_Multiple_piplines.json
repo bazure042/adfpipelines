@@ -28,7 +28,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@equals(item().value[2].table_location,'mysql')",
+									"value": "@equals(item().table_location,'mysql')",
 									"type": "Expression"
 								}
 							}
