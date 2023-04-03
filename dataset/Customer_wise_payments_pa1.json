@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "pa1/Transformation_Outputs",
+				"folderPath": "pa1/Project_Transformation_Tables",
 				"fileSystem": "targetdatastore"
 			},
 			"columnDelimiter": ",",
