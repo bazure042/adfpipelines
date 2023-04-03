@@ -28,12 +28,12 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@equals(item().table_location,'mysql')",
+									"value": "@equals(item().table_location,'sql_server')",
 									"type": "Expression"
 								},
 								"ifFalseActivities": [
 									{
-										"name": "Execute Pipeline1",
+										"name": "Copy_MySQL_Tables_2_ADLS",
 										"type": "ExecutePipeline",
 										"dependsOn": [],
 										"userProperties": [],
@@ -48,6 +48,24 @@
 													"value": "@item().table_name",
 													"type": "Expression"
 												}
+											}
+										}
+									}
+								],
+								"ifTrueActivities": [
+									{
+										"name": "Copy_SQL_Server_Tables_2_ADLS",
+										"type": "ExecutePipeline",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"pipeline": {
+												"referenceName": "Manual_Copy_SQL_Server_Tables_pa1",
+												"type": "PipelineReference"
+											},
+											"waitOnCompletion": true,
+											"parameters": {
+												"table_name": "@item().table_name"
 											}
 										}
 									}
