@@ -19,7 +19,7 @@
 						"value": "@activity('Look_up_tables_List_pa1').output.firstRow",
 						"type": "Expression"
 					},
-					"batchCount": 1,
+					"isSequential": true,
 					"activities": [
 						{
 							"name": "If Condition1",
@@ -30,28 +30,7 @@
 								"expression": {
 									"value": "@equals(item().table_location,pipeline().parameters.db_name)",
 									"type": "Expression"
-								},
-								"ifFalseActivities": [
-									{
-										"name": "Execute Pipeline1",
-										"type": "ExecutePipeline",
-										"dependsOn": [],
-										"userProperties": [],
-										"typeProperties": {
-											"pipeline": {
-												"referenceName": "Manual_Copy_Sakila_Tables",
-												"type": "PipelineReference"
-											},
-											"waitOnCompletion": true,
-											"parameters": {
-												"table_name": {
-													"value": "@item().table_name",
-													"type": "Expression"
-												}
-											}
-										}
-									}
-								]
+								}
 							}
 						}
 					]
