@@ -11,7 +11,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": "payment.csv",
-				"folderPath": "pa1/sakila_db_tables",
+				"folderPath": "pa1/Project_Sakila_Tables",
 				"fileSystem": "targetdatastore"
 			},
 			"columnDelimiter": ",",
