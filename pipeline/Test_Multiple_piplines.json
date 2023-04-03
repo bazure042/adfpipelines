@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@array(activity('Look_up_tables_List_pa1').output.firstRow)",
+						"value": "@array(activity('Look_up_tables_List_pa1').output)",
 						"type": "Expression"
 					},
 					"isSequential": true,
@@ -97,7 +97,7 @@
 						"referenceName": "SQL_Server_Lookup_Table_Pa1",
 						"type": "DatasetReference"
 					},
-					"firstRowOnly": true
+					"firstRowOnly": false
 				}
 			}
 		],
