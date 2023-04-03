@@ -1,6 +1,49 @@
 {
 	"name": "ADF_Project_01_Transformations_Pa1",
 	"properties": {
+		"activities": [
+			{
+				"name": "Copy_Sakila_Tables_From_Multiple_Sources",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Actor_Wise_Film_Count_Transformation",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Copy_Sakila_Tables_From_Multiple_Sources",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Customer_Wise_Payment_Details_Transformation",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Copy_Sakila_Tables_From_Multiple_Sources",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"waitOnCompletion": true
+				}
+			}
+		],
 		"folder": {
 			"name": "Pavan_ADE"
 		},
