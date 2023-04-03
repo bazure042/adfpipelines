@@ -60,15 +60,12 @@
 							"userProperties": [],
 							"typeProperties": {
 								"source": {
-									"type": "DelimitedTextSource",
+									"type": "ParquetSource",
 									"storeSettings": {
 										"type": "SftpReadSettings",
 										"recursive": true,
 										"enablePartitionDiscovery": false,
 										"disableChunking": false
-									},
-									"formatSettings": {
-										"type": "DelimitedTextReadSettings"
 									}
 								},
 								"sink": {
@@ -92,26 +89,14 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "sftp_rk",
-									"type": "DatasetReference",
-									"parameters": {
-										"files_sftp": {
-											"value": "@item().tablename",
-											"type": "Expression"
-										}
-									}
+									"referenceName": "sftp_files",
+									"type": "DatasetReference"
 								}
 							],
 							"outputs": [
 								{
-									"referenceName": "adls_op_db",
-									"type": "DatasetReference",
-									"parameters": {
-										"fname": {
-											"value": "@item().tablename",
-											"type": "Expression"
-										}
-									}
+									"referenceName": "adls_op_sftp",
+									"type": "DatasetReference"
 								}
 							]
 						}
