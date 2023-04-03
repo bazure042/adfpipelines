@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Look_up_tables_List_pa1').output.value",
+						"value": "@activity('Look_up_tables_List_pa1').output.firstRow",
 						"type": "Expression"
 					},
 					"batchCount": 1,
@@ -72,7 +72,6 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
