@@ -17,20 +17,19 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "use entraprizestorage;\ninsert into Control_Look_Up_Tables_pa1 values(17,'pa1_table','anylocation',CURRENT_TIMESTAMP);",
+						"sqlReaderQuery": "insert into [entraprizestorage].[dbo].[Control_Look_Up_Tables_pa1] values(17,'pa1_table','anylocation',CURRENT_TIMESTAMP);",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
 					"dataset": {
-						"referenceName": "Azure_SQL_DB_Table",
-						"type": "DatasetReference",
-						"parameters": {
-							"table_naming": "Control_Look_Up_Tables_pa1"
-						}
-					}
+						"referenceName": "SqlServerTable1",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
 				}
 			}
 		],
+		"concurrency": 1,
 		"folder": {
 			"name": "Pavan_ADE"
 		},
