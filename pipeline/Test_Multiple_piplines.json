@@ -28,7 +28,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@equals(item().table_location,pipeline().parameters.db_name)",
+									"value": "@equals(item().table_location,'mysql')",
 									"type": "Expression"
 								}
 							}
