@@ -9,7 +9,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "Copy_Sakila_Tables_From_Multiple_Sources",
+						"referenceName": "Copy_Sakila_Tables_From_Multiple_Sources_Pa1",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true
@@ -29,7 +29,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "Transform_Sakila_Actor_Wise_Film_Count",
+						"referenceName": "Transform_Sakila_Actor_Wise_Film_Count_Pa1",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true
@@ -49,7 +49,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "Transform_Sakila_Customer_Wise_Payments",
+						"referenceName": "Transform_Sakila_Customer_Wise_Payments_Pa1",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true
