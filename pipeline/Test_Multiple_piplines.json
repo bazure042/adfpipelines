@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Look_up_tables_List_pa1').output.value",
+						"value": "@activity('Look_up_tables_List_pa1').output.value[2]",
 						"type": "Expression"
 					},
 					"isSequential": true,
@@ -28,7 +28,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@equals(item().table_location,'mysql')",
+									"value": "@equals(item(),'mysql')",
 									"type": "Expression"
 								}
 							}
@@ -63,12 +63,6 @@
 			}
 		],
 		"concurrency": 1,
-		"parameters": {
-			"db_name": {
-				"type": "string",
-				"defaultValue": "mysql"
-			}
-		},
 		"folder": {
 			"name": "Pavan_ADE"
 		},
