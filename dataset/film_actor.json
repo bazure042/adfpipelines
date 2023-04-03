@@ -1,0 +1,34 @@
+{
+	"name": "film_actor",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MySql_To_AdlsG2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "sakila_film_actor.parquet",
+				"folderPath": "salman_sakila/sakila",
+				"fileSystem": "team2"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "actor_id",
+				"type": "INT32"
+			},
+			{
+				"name": "film_id",
+				"type": "INT32"
+			},
+			{
+				"name": "last_update",
+				"type": "INT96"
+			}
+		]
+	}
+}

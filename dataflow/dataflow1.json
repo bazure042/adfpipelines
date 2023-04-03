@@ -1,23 +1,123 @@
 {
 	"name": "dataflow1",
 	"properties": {
+		"folder": {
+			"name": "salman"
+		},
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
 				{
-					"name": "source1"
+					"dataset": {
+						"referenceName": "film_dataset",
+						"type": "DatasetReference"
+					},
+					"name": "filmdata"
 				},
 				{
-					"name": "source2"
+					"dataset": {
+						"referenceName": "actor",
+						"type": "DatasetReference"
+					},
+					"name": "actor"
+				},
+				{
+					"dataset": {
+						"referenceName": "film_actor",
+						"type": "DatasetReference"
+					},
+					"name": "filmactor"
 				}
 			],
-			"sinks": [],
-			"transformations": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "join_excercise_1",
+						"type": "DatasetReference"
+					},
+					"name": "sink1",
+					"rejectedDataLinkedService": {
+						"referenceName": "MySql_To_AdlsG2",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
+			"transformations": [
+				{
+					"name": "joinfilmfilmactor"
+				},
+				{
+					"name": "join1"
+				}
+			],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> source1",
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> source2"
+				"source(output(",
+				"          film_id as integer,",
+				"          title as string,",
+				"          description as string,",
+				"          release_year as integer,",
+				"          language_id as integer,",
+				"          original_language_id as integer,",
+				"          rental_duration as integer,",
+				"          rental_rate as decimal(38,18),",
+				"          length as integer,",
+				"          replacement_cost as decimal(38,18),",
+				"          rating as string,",
+				"          special_features as string,",
+				"          last_update as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> filmdata",
+				"source(output(",
+				"          actor_id as integer,",
+				"          first_name as string,",
+				"          last_name as string,",
+				"          last_update as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> actor",
+				"source(output(",
+				"          actor_id as integer,",
+				"          film_id as integer,",
+				"          last_update as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> filmactor",
+				"filmdata, filmactor join(filmdata@film_id == filmactor@film_id,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> joinfilmfilmactor",
+				"joinfilmfilmactor, actor join(filmactor@actor_id == actor@actor_id,",
+				"     joinType:'right',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join1",
+				"join1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'parquet',",
+				"     partitionFileNames:[''],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          film_id = filmdata@film_id,",
+				"          title,",
+				"          description,",
+				"          rating,",
+				"          actor_id = filmactor@actor_id,",
+				"          first_name,",
+				"          last_name",
+				"     ),",
+				"     partitionBy('hash', 1)) ~> sink1"
 			]
 		}
 	}

@@ -1,0 +1,20 @@
+{
+	"name": "join_excercise_1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MySql_To_AdlsG2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "salman_sakila/sakila/output files",
+				"fileSystem": "team2"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
