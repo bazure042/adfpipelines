@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Look_up_tables_List_pa1').output.table_location",
+						"value": "@activity('Look_up_tables_List_pa1').output.firstRow",
 						"type": "Expression"
 					},
 					"isSequential": true,
@@ -28,7 +28,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@equals(item(),'mysql')",
+									"value": "@equals(item().table_location,'mysql')",
 									"type": "Expression"
 								}
 							}
