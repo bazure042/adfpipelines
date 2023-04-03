@@ -48,10 +48,7 @@
 							"inputs": [
 								{
 									"referenceName": "MySqlTable_list_copy",
-									"type": "DatasetReference",
-									"parameters": {
-										"tname": "@table"
-									}
+									"type": "DatasetReference"
 								}
 							],
 							"outputs": [
