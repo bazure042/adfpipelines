@@ -1,5 +1,5 @@
 {
-	"name": "Test_Multiple_piplines",
+	"name": "Copy_DB_Tables_From_Multiple_Sources",
 	"properties": {
 		"activities": [
 			{
@@ -7,7 +7,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Look_up_tables_List_pa1",
+						"activity": "Lookup_Tables_List_From_SQL_Server_pa1",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@array(activity('Look_up_tables_List_pa1').output.value)",
+						"value": "@array(activity('Lookup_Tables_List_From_SQL_Server_pa1').output.value)",
 						"type": "Expression"
 					},
 					"isSequential": true,
@@ -39,7 +39,7 @@
 										"userProperties": [],
 										"typeProperties": {
 											"pipeline": {
-												"referenceName": "Manual_Copy_Sakila_Tables",
+												"referenceName": "Manual_Copy_MySQL_Tables_2_ADLS_pa1",
 												"type": "PipelineReference"
 											},
 											"waitOnCompletion": true,
@@ -60,7 +60,7 @@
 										"userProperties": [],
 										"typeProperties": {
 											"pipeline": {
-												"referenceName": "Manual_Copy_SQL_Server_Tables_pa1",
+												"referenceName": "Manual_Copy_SQL_Server_Tables_2_ADLS_pa1",
 												"type": "PipelineReference"
 											},
 											"waitOnCompletion": true,
@@ -76,7 +76,7 @@
 				}
 			},
 			{
-				"name": "Look_up_tables_List_pa1",
+				"name": "Lookup_Tables_List_From_SQL_Server_pa1",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {

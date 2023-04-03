@@ -1,5 +1,5 @@
 {
-	"name": "Manual_Copy_Sakila_Tables",
+	"name": "Manual_Copy_MySQL_Tables_2_ADLS_pa1",
 	"properties": {
 		"activities": [
 			{
