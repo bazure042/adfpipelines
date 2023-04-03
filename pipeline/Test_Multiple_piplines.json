@@ -7,7 +7,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Lookup1",
+						"activity": "Look_up_tables_List_pa1",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -15,16 +15,41 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "@activity('Look_up_tables_List_pa1').output.value",
+						"type": "Expression"
+					},
+					"batchCount": 1,
 					"activities": [
 						{
-							"name": "Switch1",
-							"type": "Switch",
+							"name": "If Condition1",
+							"type": "IfCondition",
 							"dependsOn": [],
 							"userProperties": [],
 							"typeProperties": {
-								"cases": [
+								"expression": {
+									"value": "@equals(item().table_location,'mysql')",
+									"type": "Expression"
+								},
+								"ifFalseActivities": [
 									{
-										"value": ""
+										"name": "Execute Pipeline1",
+										"type": "ExecutePipeline",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"pipeline": {
+												"referenceName": "Manual_Copy_Sakila_Tables",
+												"type": "PipelineReference"
+											},
+											"waitOnCompletion": true,
+											"parameters": {
+												"table_name": {
+													"value": "@item().table_name",
+													"type": "Expression"
+												}
+											}
+										}
 									}
 								]
 							}
@@ -33,7 +58,7 @@
 				}
 			},
 			{
-				"name": "Lookup1",
+				"name": "Look_up_tables_List_pa1",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -47,6 +72,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
+						"sqlReaderQuery": "",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -54,7 +80,7 @@
 						"referenceName": "SQL_Server_Lookup_Table_Pa1",
 						"type": "DatasetReference"
 					},
-					"firstRowOnly": false
+					"firstRowOnly": true
 				}
 			}
 		],
