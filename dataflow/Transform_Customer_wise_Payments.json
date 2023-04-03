@@ -3,11 +3,138 @@
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
-			"sources": [],
-			"sinks": [],
-			"transformations": [],
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Payment_table_pa1",
+						"type": "DatasetReference"
+					},
+					"name": "PaymentsTable"
+				},
+				{
+					"dataset": {
+						"referenceName": "Customers_table_pa1",
+						"type": "DatasetReference"
+					},
+					"name": "CustomersTable"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Customer_wise_payments_pa1",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "select1"
+				},
+				{
+					"name": "join1"
+				},
+				{
+					"name": "select2"
+				},
+				{
+					"name": "select3"
+				},
+				{
+					"name": "aggregate1"
+				},
+				{
+					"name": "join2"
+				},
+				{
+					"name": "select4"
+				}
+			],
 			"scriptLines": [
-				""
+				"source(output(",
+				"          payment_id as integer,",
+				"          customer_id as integer,",
+				"          staff_id as integer,",
+				"          rental_id as integer,",
+				"          amount as double,",
+				"          payment_date as date,",
+				"          last_update as date",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> PaymentsTable",
+				"source(output(",
+				"          customer_id as integer,",
+				"          store_id as integer,",
+				"          first_name as string,",
+				"          last_name as string,",
+				"          email as string,",
+				"          address_id as integer,",
+				"          active as string,",
+				"          create_date as string,",
+				"          last_update as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> CustomersTable",
+				"PaymentsTable select(mapColumn(",
+				"          payment_id,",
+				"          customer_id,",
+				"          amount",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1, select2 join(select1@customer_id == select2@customer_id,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join1",
+				"CustomersTable select(mapColumn(",
+				"          customer_id,",
+				"          first_name,",
+				"          last_name",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select2",
+				"join1 select(mapColumn(",
+				"          customer_id = select1@customer_id,",
+				"          first_name,",
+				"          last_name,",
+				"          amount",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select3",
+				"select3 aggregate(groupBy(customer_id),",
+				"     No_of_Payments = count(customer_id),",
+				"          Total_payment_amount = sum(amount)) ~> aggregate1",
+				"aggregate1, select2 join(aggregate1@customer_id == select2@customer_id,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join2",
+				"join2 select(mapColumn(",
+				"          customer_id = aggregate1@customer_id,",
+				"          first_name,",
+				"          last_name,",
+				"          No_of_Payments,",
+				"          Total_payment_amount",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select4",
+				"select4 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Column_1 as string,",
+				"          Column_2 as string,",
+				"          Column_3 as string,",
+				"          Column_4 as string",
+				"     ),",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
