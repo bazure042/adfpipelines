@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Look_up_tables_List_pa1').output.firstRow.value[2]",
+						"value": "@activity('Look_up_tables_List_pa1').output.firstRow.table_location",
 						"type": "Expression"
 					},
 					"isSequential": true,
