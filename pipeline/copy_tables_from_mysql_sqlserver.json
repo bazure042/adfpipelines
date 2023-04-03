@@ -48,7 +48,10 @@
 							"inputs": [
 								{
 									"referenceName": "MySqlTable_list_copy",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"tname": "@item()"
+									}
 								}
 							],
 							"outputs": [
@@ -68,6 +71,7 @@
 				}
 			}
 		],
+		"concurrency": 1,
 		"parameters": {
 			"t_names": {
 				"type": "array",
