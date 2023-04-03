@@ -12,8 +12,7 @@
 						"value": "@pipeline().parameters.tnames",
 						"type": "Expression"
 					},
-					"isSequential": false,
-					"batchCount": 10,
+					"isSequential": true,
 					"activities": [
 						{
 							"name": "Copy data1",
