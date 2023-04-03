@@ -90,13 +90,25 @@
 							"inputs": [
 								{
 									"referenceName": "sftp_files",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"sftp_files": {
+											"value": "@item().tablename",
+											"type": "Expression"
+										}
+									}
 								}
 							],
 							"outputs": [
 								{
 									"referenceName": "adls_op_sftp",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"fname": {
+											"value": "@item().tablename",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
