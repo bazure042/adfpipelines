@@ -1,0 +1,27 @@
+{
+	"name": "SqlServerTable_copy_rk",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServer_rk",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"table_names": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Ruksana"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().table_names",
+				"type": "Expression"
+			}
+		}
+	}
+}
