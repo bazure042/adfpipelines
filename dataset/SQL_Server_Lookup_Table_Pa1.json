@@ -1,0 +1,34 @@
+{
+	"name": "SQL_Server_Lookup_Table_Pa1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Azure_Cloud_SQL_DB_pa1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "table_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "table_name",
+				"type": "varchar"
+			},
+			{
+				"name": "table_location",
+				"type": "varchar"
+			},
+			{
+				"name": "last_extraction_date",
+				"type": "date"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Control_Look_Up_Tables_pa1"
+		}
+	}
+}
