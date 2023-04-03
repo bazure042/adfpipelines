@@ -1,6 +1,87 @@
 {
 	"name": "Manual_Copy_SQL_Server_Tables_pa1",
 	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Azure_SQL_DB_Table",
+						"type": "DatasetReference",
+						"parameters": {
+							"table_naming": {
+								"value": "@concat(variables('table_naming'),pipeline().parameters.table_name)",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Project_Sakila_Tables_Pa1",
+						"type": "DatasetReference",
+						"parameters": {
+							"file_name": {
+								"value": "@concat(pipeline().parameters.table_name,variables('extension'))",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"table_name": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"table_naming": {
+				"type": "String",
+				"defaultValue": "MySQL_Table_Pa1_"
+			},
+			"extension": {
+				"type": "String",
+				"defaultValue": ".csv"
+			}
+		},
 		"folder": {
 			"name": "Pavan_ADE"
 		},
