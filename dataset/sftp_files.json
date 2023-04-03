@@ -1,5 +1,5 @@
 {
-	"name": "adls_op_sftp",
+	"name": "sftp_files",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Sftp_rk",
