@@ -39,7 +39,7 @@
 										"userProperties": [],
 										"typeProperties": {
 											"pipeline": {
-												"referenceName": "Manual_Copy_MySQL_Tables_2_ADLS_pa1",
+												"referenceName": "Manual_Copy_MySQL_Sakila_Tables_2_ADLS_pa1",
 												"type": "PipelineReference"
 											},
 											"waitOnCompletion": true,
@@ -60,7 +60,7 @@
 										"userProperties": [],
 										"typeProperties": {
 											"pipeline": {
-												"referenceName": "Manual_Copy_SQL_Server_Tables_2_ADLS_pa1",
+												"referenceName": "Manual_Copy_SQL_Server_Sakila_Tables_2_ADLS_pa1",
 												"type": "PipelineReference"
 											},
 											"waitOnCompletion": true,

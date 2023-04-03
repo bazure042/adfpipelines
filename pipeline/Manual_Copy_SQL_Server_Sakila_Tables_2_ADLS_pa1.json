@@ -1,5 +1,5 @@
 {
-	"name": "Manual_Copy_SQL_Server_Tables_2_ADLS_pa1",
+	"name": "Manual_Copy_SQL_Server_Sakila_Tables_2_ADLS_pa1",
 	"properties": {
 		"activities": [
 			{

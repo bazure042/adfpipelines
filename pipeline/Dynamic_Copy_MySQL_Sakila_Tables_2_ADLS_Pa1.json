@@ -1,5 +1,5 @@
 {
-	"name": "Dynamic_Copy_MySQL_Tables_2_ADLS_Pa1",
+	"name": "Dynamic_Copy_MySQL_Sakila_Tables_2_ADLS_Pa1",
 	"properties": {
 		"activities": [
 			{

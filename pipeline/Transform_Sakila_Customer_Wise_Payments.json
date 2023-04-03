@@ -1,5 +1,5 @@
 {
-	"name": "Transform_Customer_Wise_Payments",
+	"name": "Transform_Sakila_Customer_Wise_Payments",
 	"properties": {
 		"activities": [
 			{
