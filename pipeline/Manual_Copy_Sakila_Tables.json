@@ -54,10 +54,10 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Sample_Tables_Copy",
+						"referenceName": "Project_Sakila_Tables_Pa1",
 						"type": "DatasetReference",
 						"parameters": {
-							"Table_naming": {
+							"file_name": {
 								"value": "@concat(pipeline().parameters.table_name,variables('extension'))",
 								"type": "Expression"
 							}
