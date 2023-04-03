@@ -95,7 +95,7 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "adls_op_db_sftp",
+									"referenceName": "adls_op_db",
 									"type": "DatasetReference",
 									"parameters": {
 										"fname": {

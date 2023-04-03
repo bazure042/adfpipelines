@@ -1,5 +1,5 @@
 {
-	"name": "adls_op_db_sftp",
+	"name": "adls_op_db",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "adls_op_store",
