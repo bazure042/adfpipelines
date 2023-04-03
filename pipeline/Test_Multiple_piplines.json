@@ -28,7 +28,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@equals(item().table_location,'mysql')",
+									"value": "@equals(item().table_location,variables('DB_name'))",
 									"type": "Expression"
 								},
 								"ifFalseActivities": [
@@ -83,6 +83,12 @@
 				}
 			}
 		],
+		"variables": {
+			"DB_name": {
+				"type": "String",
+				"defaultValue": "mysql"
+			}
+		},
 		"folder": {
 			"name": "Pavan_ADE"
 		},
