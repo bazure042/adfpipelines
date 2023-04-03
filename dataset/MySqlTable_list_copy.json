@@ -8,7 +8,7 @@
 		"parameters": {
 			"tname": {
 				"type": "string",
-				"defaultValue": "@table"
+				"defaultValue": "@item"
 			}
 		},
 		"folder": {
