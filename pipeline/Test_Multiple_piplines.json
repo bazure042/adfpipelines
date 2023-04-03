@@ -28,7 +28,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@equals(item().value[2],pipeline().parameters.db_name)",
+									"value": "@equals(item()[2],pipeline().parameters.db_name)",
 									"type": "Expression"
 								}
 							}
