@@ -8,6 +8,10 @@
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Copy_Sakila_Tables_From_Multiple_Sources",
+						"type": "PipelineReference"
+					},
 					"waitOnCompletion": true
 				}
 			},
