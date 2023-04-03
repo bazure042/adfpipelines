@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Look_up_tables_List_pa1').output.childItems",
+						"value": "@activity('Look_up_tables_List_pa1').output.pipelineReturnValue",
 						"type": "Expression"
 					},
 					"isSequential": true,
