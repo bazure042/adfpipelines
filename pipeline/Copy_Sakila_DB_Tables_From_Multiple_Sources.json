@@ -1,5 +1,5 @@
 {
-	"name": "Copy_DB_Tables_From_Multiple_Sources",
+	"name": "Copy_Sakila_DB_Tables_From_Multiple_Sources",
 	"properties": {
 		"activities": [
 			{
@@ -65,7 +65,10 @@
 											},
 											"waitOnCompletion": true,
 											"parameters": {
-												"table_name": "@item().table_name"
+												"table_name": {
+													"value": "@item().table_name",
+													"type": "Expression"
+												}
 											}
 										}
 									}
