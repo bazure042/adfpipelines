@@ -1,0 +1,31 @@
+{
+	"name": "adls_op_sftp",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Sftp_rk",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"sftp_files": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Ruksana"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "SftpLocation",
+				"fileName": {
+					"value": "@dataset().sftp_files",
+					"type": "Expression"
+				},
+				"folderPath": "/landing/ruksana"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
