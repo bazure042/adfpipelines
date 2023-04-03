@@ -28,6 +28,10 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Transform_Sakila_Actor_Wise_Film_Count",
+						"type": "PipelineReference"
+					},
 					"waitOnCompletion": true
 				}
 			},
@@ -44,6 +48,10 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Transform_Sakila_Customer_Wise_Payments",
+						"type": "PipelineReference"
+					},
 					"waitOnCompletion": true
 				}
 			}
