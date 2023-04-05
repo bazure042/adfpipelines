@@ -29,10 +29,7 @@
 					},
 					"dataset": {
 						"referenceName": "Azure_SQL_DB_Table",
-						"type": "DatasetReference",
-						"parameters": {
-							"table_naming": "Control_Look_Up_Tables_pa1"
-						}
+						"type": "DatasetReference"
 					}
 				}
 			}
