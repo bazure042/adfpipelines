@@ -3,8 +3,8 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "SQL_Server_Sakila_Tables_Copy",
-				"type": "Copy",
+				"name": "Check_Table_Exist_in_Source",
+				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -15,46 +15,123 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"source": {
-						"type": "SqlServerSource",
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
-					},
-					"sink": {
-						"type": "DelimitedTextSink",
-						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
-						}
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
-					{
+					"dataset": {
 						"referenceName": "Azure_SQL_DB_Table",
 						"type": "DatasetReference",
 						"parameters": {
-							"table_naming": {
-								"value": "@concat(variables('table_naming'),pipeline().parameters.table_name)",
-								"type": "Expression"
-							}
+							"table_naming": "@concat(variables('table_naming'),pipeline().parameters.table_name)"
 						}
+					},
+					"fieldList": [
+						"exists"
+					]
+				}
+			},
+			{
+				"name": "If Condition1",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "Check_Table_Exist_in_Source",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Check_File_Exist_in_Target",
+						"dependencyConditions": [
+							"Succeeded"
+						]
 					}
 				],
-				"outputs": [
-					{
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@and(activity('Check_Table_Exist_in_Source').output.exists,not(activity('Check_File_Exist_in_Target').output.exists))",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "SQL_Server_Sakila_Tables_Copy_copy1",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "SqlServerSource",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "Azure_SQL_DB_Table",
+									"type": "DatasetReference",
+									"parameters": {
+										"table_naming": {
+											"value": "@concat(variables('table_naming'),pipeline().parameters.table_name)",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "Project_Sakila_Tables_Pa1",
+									"type": "DatasetReference",
+									"parameters": {
+										"file_name": {
+											"value": "@concat(pipeline().parameters.table_name,variables('extension'))",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"name": "Check_File_Exist_in_Target",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
 						"referenceName": "Project_Sakila_Tables_Pa1",
 						"type": "DatasetReference",
 						"parameters": {
@@ -63,8 +140,16 @@
 								"type": "Expression"
 							}
 						}
+					},
+					"fieldList": [],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
 					}
-				]
+				}
 			}
 		],
 		"parameters": {
