@@ -26,10 +26,10 @@
 						},
 						"timestamp": {
 							"value": {
-								"value": "utcnow('yy-MM-dd hh:mm:ss')",
+								"value": "utcnow('dd-MM-yy hh:mm:ss:aa')",
 								"type": "Expression"
 							},
-							"type": "DateTime"
+							"type": "String"
 						}
 					}
 				},
