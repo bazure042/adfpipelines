@@ -129,7 +129,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
-									"referenceName": "Audit_Lookup_Control_Table",
+									"referenceName": "Audit_Control_Table_Updation",
 									"type": "PipelineReference"
 								},
 								"waitOnCompletion": true,
