@@ -56,7 +56,10 @@
 									"referenceName": "MySqlTable_list_copy",
 									"type": "DatasetReference",
 									"parameters": {
-										"tname": "@item"
+										"tname": {
+											"value": "@item()",
+											"type": "Expression"
+										}
 									}
 								}
 							],
