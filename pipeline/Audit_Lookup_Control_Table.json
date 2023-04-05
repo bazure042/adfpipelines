@@ -29,6 +29,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"table_id": {
+				"type": "int"
+			}
+		},
 		"folder": {
 			"name": "Pavan_ADE"
 		},
