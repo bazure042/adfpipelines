@@ -101,6 +101,12 @@
 				]
 			}
 		},
+		"variables": {
+			"extn": {
+				"type": "String",
+				"defaultValue": ".csv"
+			}
+		},
 		"folder": {
 			"name": "Ruksana"
 		},
