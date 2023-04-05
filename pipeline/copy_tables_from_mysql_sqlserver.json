@@ -51,7 +51,7 @@
 									"referenceName": "MySqlTable_list_copy",
 									"type": "DatasetReference",
 									"parameters": {
-										"tname": "@item()"
+										"t_names": "@item()"
 									}
 								}
 							],
