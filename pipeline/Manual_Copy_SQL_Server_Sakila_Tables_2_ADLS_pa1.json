@@ -52,7 +52,7 @@
 					},
 					"ifTrueActivities": [
 						{
-							"name": "SQL_Server_Sakila_Tables_Copy_copy1",
+							"name": "SQL_Server_Sakila_Tables_Copy_2_ADLS",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {

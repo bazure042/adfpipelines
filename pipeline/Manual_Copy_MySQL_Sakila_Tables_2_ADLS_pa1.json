@@ -53,7 +53,7 @@
 					},
 					"ifTrueActivities": [
 						{
-							"name": "MySQL_Sakila_Tables_Copy_copy1",
+							"name": "MySQL_Sakila_Tables_Copy_2_ADLS",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
