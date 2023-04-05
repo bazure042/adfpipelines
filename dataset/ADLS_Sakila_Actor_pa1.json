@@ -1,0 +1,41 @@
+{
+	"name": "ADLS_Sakila_Actor_pa1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "enterprizestorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "actor.csv",
+				"folderPath": "pa1/sakila_db_tables",
+				"fileSystem": "targetdatastore"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "actor_id",
+				"type": "String"
+			},
+			{
+				"name": "first_name",
+				"type": "String"
+			},
+			{
+				"name": "last_name",
+				"type": "String"
+			},
+			{
+				"name": "last_update",
+				"type": "String"
+			}
+		]
+	}
+}
