@@ -114,6 +114,32 @@
 									}
 								}
 							]
+						},
+						{
+							"name": "Execute Pipeline1",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "SQL_Server_Sakila_Tables_Copy_2_ADLS",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "Audit_Lookup_Control_Table",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"table_id": {
+										"value": "@pipeline().parameters.table_id",
+										"type": "Expression"
+									}
+								}
+							}
 						}
 					]
 				}
@@ -146,6 +172,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -157,6 +184,9 @@
 		"parameters": {
 			"table_name": {
 				"type": "string"
+			},
+			"table_id": {
+				"type": "int"
 			}
 		},
 		"variables": {

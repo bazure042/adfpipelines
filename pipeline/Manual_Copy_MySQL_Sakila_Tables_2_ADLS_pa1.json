@@ -151,7 +151,7 @@
 				"type": "string"
 			},
 			"table_id": {
-				"type": "string"
+				"type": "int"
 			}
 		},
 		"variables": {
