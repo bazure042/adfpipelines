@@ -1,6 +1,42 @@
 {
 	"name": "Audit_Lookup_Control_Table",
 	"properties": {
+		"activities": [
+			{
+				"name": "Lookup1",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderStoredProcedureName": "[dbo].[update_lookup]",
+						"storedProcedureParameters": {
+							"Id": {
+								"type": "Int32",
+								"value": "1"
+							}
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "Azure_SQL_DB_Table",
+						"type": "DatasetReference",
+						"parameters": {
+							"table_naming": "Control_Look_Up_Tables_pa1"
+						}
+					}
+				}
+			}
+		],
 		"folder": {
 			"name": "Pavan_ADE"
 		},
