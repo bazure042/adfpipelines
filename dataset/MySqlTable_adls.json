@@ -7,12 +7,17 @@
 		},
 		"parameters": {
 			"t_name": {
-				"type": "string",
-				"defaultValue": "@item()"
+				"type": "string"
 			}
 		},
 		"annotations": [],
 		"type": "MySqlTable",
-		"schema": []
+		"schema": [],
+		"typeProperties": {
+			"tableName": {
+				"value": "@dataset().t_name",
+				"type": "Expression"
+			}
+		}
 	}
 }
