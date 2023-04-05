@@ -18,7 +18,10 @@
 					"storedProcedureName": "[dbo].[update_lookup]",
 					"storedProcedureParameters": {
 						"id": {
-							"value": "",
+							"value": {
+								"value": "@pipeline().parameters.table_id",
+								"type": "Expression"
+							},
 							"type": "Int32"
 						},
 						"timestamp": {
