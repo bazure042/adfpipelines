@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"tname": {
+			"t_names": {
 				"type": "string",
 				"defaultValue": "@item"
 			}
