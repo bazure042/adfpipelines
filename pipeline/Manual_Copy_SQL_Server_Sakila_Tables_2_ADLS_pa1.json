@@ -116,7 +116,7 @@
 							]
 						},
 						{
-							"name": "Execute Pipeline1",
+							"name": "Control_Table_Update_last_extraction_date",
 							"type": "ExecutePipeline",
 							"dependsOn": [
 								{
