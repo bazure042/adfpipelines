@@ -53,10 +53,10 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "MySqlTable_list_copy",
+									"referenceName": "MySqlTable_adls",
 									"type": "DatasetReference",
 									"parameters": {
-										"tname": {
+										"t_name": {
 											"value": "@item()",
 											"type": "Expression"
 										}
@@ -69,7 +69,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"target_tname": {
-											"value": "@item()",
+											"value": "@concat(item(),variables('extn'))",
 											"type": "Expression"
 										}
 									}
