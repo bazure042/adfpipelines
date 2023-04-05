@@ -3,8 +3,8 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Lookup1",
-				"type": "Lookup",
+				"name": "Stored procedure1",
+				"type": "SqlServerStoredProcedure",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -15,22 +15,17 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"source": {
-						"type": "SqlServerSource",
-						"sqlReaderStoredProcedureName": "[dbo].[update_lookup]",
-						"storedProcedureParameters": {
-							"Id": {
-								"type": "Int32",
-								"value": "1"
-							}
-						},
-						"queryTimeout": "02:00:00",
-						"partitionOption": "None"
-					},
-					"dataset": {
-						"referenceName": "Azure_SQL_DB_Table",
-						"type": "DatasetReference"
+					"storedProcedureName": "[dbo].[update_lookup]",
+					"storedProcedureParameters": {
+						"Id": {
+							"value": "1",
+							"type": "Int32"
+						}
 					}
+				},
+				"linkedServiceName": {
+					"referenceName": "Azure_Cloud_SQL_DB_pa1",
+					"type": "LinkedServiceReference"
 				}
 			}
 		],
