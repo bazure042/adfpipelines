@@ -26,7 +26,7 @@
 						},
 						"timestamp": {
 							"value": {
-								"value": "@utcNow('yy-MM-dd hh:mm:ss')",
+								"value": "@formatDateTime('yy-MM-dd hh:mm:ss')",
 								"type": "Expression"
 							},
 							"type": "String"
