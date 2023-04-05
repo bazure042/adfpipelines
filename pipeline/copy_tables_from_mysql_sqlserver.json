@@ -9,7 +9,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@pipeline().parameters.t_names",
+						"value": "@pipeline().parameters.tlist",
 						"type": "Expression"
 					},
 					"isSequential": true,
