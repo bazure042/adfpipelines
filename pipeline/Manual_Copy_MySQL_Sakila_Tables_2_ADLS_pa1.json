@@ -133,7 +133,13 @@
 									"referenceName": "Audit_Lookup_Control_Table",
 									"type": "PipelineReference"
 								},
-								"waitOnCompletion": true
+								"waitOnCompletion": true,
+								"parameters": {
+									"table_id": {
+										"value": "@pipeline().parameters.table_id",
+										"type": "Expression"
+									}
+								}
 							}
 						}
 					]
@@ -142,6 +148,9 @@
 		],
 		"parameters": {
 			"table_name": {
+				"type": "string"
+			},
+			"table_id": {
 				"type": "string"
 			}
 		},
