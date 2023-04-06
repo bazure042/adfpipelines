@@ -1,0 +1,31 @@
+{
+	"name": "aggregation_queries",
+	"properties": {
+		"activities": [
+			{
+				"name": "Stored procedure1",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[aggregation_queries_procedure]"
+				},
+				"linkedServiceName": {
+					"referenceName": "SqlServer_rk",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "Ruksana"
+		},
+		"annotations": []
+	}
+}
