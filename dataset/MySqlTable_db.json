@@ -1,0 +1,24 @@
+{
+	"name": "MySqlTable_db",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "windows_server_db_rk",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"table_name": {
+				"type": "string",
+				"defaultValue": "@item()"
+			}
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": {
+				"value": "@dataset().table_name",
+				"type": "Expression"
+			}
+		}
+	}
+}
