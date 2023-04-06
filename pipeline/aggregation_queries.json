@@ -15,7 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dbo].[aggregation_queries_procedure1]",
+					"storedProcedureName": "[dbo].[aggr_qry_prcr]",
 					"storedProcedureParameters": {
 						"t1": {
 							"value": "",
