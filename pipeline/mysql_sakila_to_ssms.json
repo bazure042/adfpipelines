@@ -1,5 +1,5 @@
 {
-	"name": "pipeline1",
+	"name": "mysql_sakila_to_ssms",
 	"properties": {
 		"activities": [
 			{
@@ -23,6 +23,26 @@
 						"referenceName": "MySqlTables",
 						"type": "DatasetReference"
 					}
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "list of tables",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('list of tables').output.value",
+						"type": "Expression"
+					},
+					"isSequential": true
 				}
 			}
 		],
