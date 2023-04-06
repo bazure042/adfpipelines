@@ -15,7 +15,13 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dbo].[aggregation_queries_procedure]"
+					"storedProcedureName": "[dbo].[aggregation_queries_procedure1]",
+					"storedProcedureParameters": {
+						"t1": {
+							"value": "",
+							"type": "String"
+						}
+					}
 				},
 				"linkedServiceName": {
 					"referenceName": "SqlServer_rk",
