@@ -29,6 +29,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"t_id": {
+				"type": "int"
+			}
+		},
 		"folder": {
 			"name": "Ruksana"
 		},
