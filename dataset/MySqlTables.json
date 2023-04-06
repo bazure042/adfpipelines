@@ -5,11 +5,19 @@
 			"referenceName": "Windows_server_Mysql",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"table": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "MySqlTable",
 		"schema": [],
 		"typeProperties": {
-			"tableName": "`actor_info`"
+			"tableName": {
+				"value": "@dataset().table",
+				"type": "Expression"
+			}
 		}
 	}
 }
