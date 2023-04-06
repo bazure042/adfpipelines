@@ -1,0 +1,24 @@
+{
+	"name": "SqlServerTable_db_op",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServer_rk",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"table_naming": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().table_naming",
+				"type": "Expression"
+			}
+		}
+	}
+}
