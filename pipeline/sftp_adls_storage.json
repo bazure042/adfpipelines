@@ -93,7 +93,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"sftp_files": {
-											"value": "@item().tablename",
+											"value": "@item().table_name",
 											"type": "Expression"
 										}
 									}
@@ -105,7 +105,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"fname": {
-											"value": "@item().tablename",
+											"value": "@item().table_name",
 											"type": "Expression"
 										}
 									}
