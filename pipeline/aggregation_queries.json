@@ -20,6 +20,20 @@
 						"t1": {
 							"value": "",
 							"type": "String"
+						},
+						"id": {
+							"value": {
+								"value": "@pipeline().parameters.t_id",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"current_time": {
+							"value": {
+								"value": "@utcnow('dd-mm-yyyyTHH:mm:ss')",
+								"type": "Expression"
+							},
+							"type": "String"
 						}
 					}
 				},
