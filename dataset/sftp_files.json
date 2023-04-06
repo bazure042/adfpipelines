@@ -22,7 +22,7 @@
 					"value": "@dataset().sftp_files",
 					"type": "Expression"
 				},
-				"folderPath": "/landing/ruksana"
+				"folderPath": "/landing/ruksana/"
 			},
 			"compressionCodec": "snappy"
 		},
