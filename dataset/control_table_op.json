@@ -10,7 +10,7 @@
 		"schema": [],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "Data_load_control"
+			"table": "Control_Look_Up_Tables_pa1"
 		}
 	}
 }
