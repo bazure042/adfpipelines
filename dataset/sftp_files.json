@@ -18,6 +18,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "SftpLocation",
+				"fileName": {
+					"value": "@dataset().sftp_files",
+					"type": "Expression"
+				},
 				"folderPath": "/landing/ruksana"
 			},
 			"compressionCodec": "snappy"
