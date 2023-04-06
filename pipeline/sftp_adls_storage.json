@@ -119,7 +119,7 @@
 		"variables": {
 			"sftplist": {
 				"type": "String",
-				"defaultValue": "[\"actor\",\"film_actor\",\"rental\",\"payment\"]"
+				"defaultValue": "[\"actor\",\"address\",\"category\",\"city\",\"country\",\"customer\",\"film\",\"film_actor\",\"film_category\",\"film_text\",\"inventory\",\"language\",\"payment\",\"rental\",\"staff\",\"store\"]"
 			}
 		},
 		"folder": {
