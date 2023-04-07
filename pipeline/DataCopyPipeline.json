@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "employee_file_copy",
+				"name": "employee_file_",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
