@@ -1,0 +1,77 @@
+{
+	"name": "adls_staff",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adls2_ruksana",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "ruksana",
+				"fileSystem": "targetdatastore"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "film_id",
+				"type": "INT32"
+			},
+			{
+				"name": "title",
+				"type": "UTF8"
+			},
+			{
+				"name": "description",
+				"type": "UTF8"
+			},
+			{
+				"name": "release_year",
+				"type": "INT32"
+			},
+			{
+				"name": "language_id",
+				"type": "INT32"
+			},
+			{
+				"name": "original_language_id",
+				"type": "INT32"
+			},
+			{
+				"name": "rental_duration",
+				"type": "INT32"
+			},
+			{
+				"name": "rental_rate",
+				"type": "DECIMAL",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "length",
+				"type": "INT32"
+			},
+			{
+				"name": "replacement_cost",
+				"type": "DECIMAL",
+				"precision": 38,
+				"scale": 18
+			},
+			{
+				"name": "rating",
+				"type": "UTF8"
+			},
+			{
+				"name": "special_features",
+				"type": "UTF8"
+			},
+			{
+				"name": "last_update",
+				"type": "INT96"
+			}
+		]
+	}
+}
