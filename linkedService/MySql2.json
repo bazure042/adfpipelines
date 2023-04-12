@@ -1,0 +1,12 @@
+{
+	"name": "MySql2",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "MySql",
+		"typeProperties": {
+			"connectionString": "server=20.219.136.41;port=3306;database=employees;user=salman;sslmode=1;usesystemtruststore=0",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEIxQjQ4MTBDLTgxQzItNDg4Mi05N0Q5LTNGMDlENzgxNzQ2OF8wYzE3MDdhOC0yOTJmLTRkYzEtOGI4Zi04NGM1YjJjNDAxNTUiDQp9"
+		}
+	}
+}
