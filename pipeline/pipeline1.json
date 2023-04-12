@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "MySqlSource",
-						"query": "SELECT TABLE_SCHEMA, TABLE_NAME FROM\ninformation_schema.TABLES\nWHERE TABLE_TYPE = 'BASE TABLE' and TABLE_SCHEMA = 'employees';"
+						"query": "SELECT TABLE_SCHEMA, TABLE_NAME FROM\ninformation_schema.TABLES\nWHERE TABLE_TYPE = 'BASE TABLE' and TABLE_SCHEMA = 'sakila';"
 					},
 					"dataset": {
 						"referenceName": "MySqlTable4",
@@ -40,7 +40,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Copy data1').output.value",
+						"value": "@activity('Lookup1').output.value",
 						"type": "Expression"
 					},
 					"isSequential": true,
