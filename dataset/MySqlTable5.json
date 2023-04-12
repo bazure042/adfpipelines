@@ -2,7 +2,7 @@
 	"name": "MySqlTable5",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "MySql1",
+			"referenceName": "MySql2",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
