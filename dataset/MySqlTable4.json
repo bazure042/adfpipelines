@@ -2,25 +2,14 @@
 	"name": "MySqlTable4",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "Windows_server_MySql_employee",
+			"referenceName": "MySql1",
 			"type": "LinkedServiceReference"
-		},
-		"parameters": {
-			"table": {
-				"type": "string"
-			}
 		},
 		"folder": {
 			"name": "salman"
 		},
 		"annotations": [],
 		"type": "MySqlTable",
-		"schema": [],
-		"typeProperties": {
-			"tableName": {
-				"value": "@dataset().table",
-				"type": "Expression"
-			}
-		}
+		"schema": []
 	}
 }
