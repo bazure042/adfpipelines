@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": "category.parquet",
 				"folderPath": "ruksana",
 				"fileSystem": "targetdatastore"
 			},
