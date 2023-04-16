@@ -1,0 +1,17 @@
+{
+	"name": "databricksconnection",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDatabricks",
+		"typeProperties": {
+			"domain": "https://adb-8629575264604895.15.azuredatabricks.net",
+			"authentication": "MSI",
+			"workspaceResourceId": "/subscriptions/00ab23bb-b36e-4927-b337-a3c9620906db/resourceGroups/VM_Storage_RG/providers/Microsoft.Databricks/workspaces/dataprocessing",
+			"newClusterNodeType": "Standard_DS3_v2",
+			"newClusterNumOfWorker": "5",
+			"newClusterVersion": "10.4.x-scala2.12",
+			"newClusterInitScripts": [],
+			"clusterOption": "Fixed"
+		}
+	}
+}
