@@ -1,0 +1,39 @@
+{
+	"name": "controltables",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "enterprizestorage_db",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "service_pri",
+				"type": "varchar"
+			},
+			{
+				"name": "storage_account",
+				"type": "varchar"
+			},
+			{
+				"name": "table_name",
+				"type": "varchar"
+			},
+			{
+				"name": "trf_query",
+				"type": "varchar"
+			},
+			{
+				"name": "last_extraction",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "dataload_control"
+		}
+	}
+}

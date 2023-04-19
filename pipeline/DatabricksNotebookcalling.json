@@ -16,6 +16,15 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "controltables",
+						"type": "DatasetReference"
+					},
 					"firstRowOnly": false
 				}
 			},
@@ -33,7 +42,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Lookup1').output",
+						"value": "@activity('Lookup1').output.value",
 						"type": "Expression"
 					},
 					"activities": [
@@ -53,15 +62,15 @@
 								"notebookPath": "/Repos/bazureapril2023@gmail.com/DataBricks/Azure_DataBricks_session/useCase",
 								"baseParameters": {
 									"srvc_principle_secr": {
-										"value": "@item().principle",
+										"value": "@item().service_pri",
 										"type": "Expression"
 									},
 									"storage_account": {
-										"value": "@item().storagename",
+										"value": "@item().storage_account",
 										"type": "Expression"
 									},
 									"tablename": {
-										"value": "@item().tablename",
+										"value": "@item().table_name",
 										"type": "Expression"
 									}
 								}
