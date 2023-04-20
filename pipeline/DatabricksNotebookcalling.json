@@ -79,6 +79,41 @@
 								"referenceName": "databricksconnection",
 								"type": "LinkedServiceReference"
 							}
+						},
+						{
+							"name": "Stored procedure1",
+							"type": "SqlServerStoredProcedure",
+							"dependsOn": [
+								{
+									"activity": "Notebook1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"storedProcedureName": "sp_execute_sql",
+								"storedProcedureParameters": {
+									"stmt": {
+										"value": {
+											"value": "@concat('update [dbo].[dataload_control] set last_extraction=getdate() where table_name=','''','rental','''')",
+											"type": "Expression"
+										}
+									}
+								}
+							},
+							"linkedServiceName": {
+								"referenceName": "enterprizestorage_db",
+								"type": "LinkedServiceReference"
+							}
 						}
 					]
 				}
